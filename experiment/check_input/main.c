@@ -1,4 +1,4 @@
-#include "include/token.h"
+#include "include/minishell.h"
 
 static int is_blank(char *s)
 {
@@ -32,10 +32,10 @@ int main(int ac, char **av)
 		if (strlen(av[1]) < BUFFER_SIZE)
 		{
 			initialize_data(&data, av[1]);	
-			tokenize(&data);
+			check_syntax(&data);
 		}
 		else
-			printf("ERROR: Can't process. Input command too large");
+			printf("ERROR: Can't process. Input command too long");
     }
 	return 0;
 }

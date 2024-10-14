@@ -29,7 +29,7 @@ void pop_operator(t_data *data, int *j)
     
     i = 0;
     initialize_pattern(pattern);
-    while(*j < TOKEN_LIST && pattern[i][0])
+    while(*j < TOKEN_SIZE && pattern[i][0])
     {   
         index = find_word(data->s, data->s_len, pattern[i]);
         if (index >= 0)

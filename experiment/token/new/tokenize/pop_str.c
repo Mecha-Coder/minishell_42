@@ -12,7 +12,7 @@ void pop_str(t_data *data, int *j)
     int isstr;
 
     (i = -1, detect = ON, isstr = FALSE);
-    while(++i < data->s_len)
+    while(*j < TOKEN_SIZE && ++i < data->s_len)
     {
         detection(data->s[i], &detect);
         if (!blank(data->s[i]) && isstr == FALSE)

@@ -1,5 +1,5 @@
-#ifndef TOKEN_H
-#define TOKEN_H
+#ifndef MINISHELL_H
+#define MINISHELL_H
 
 //******************************************/
 
@@ -35,14 +35,6 @@ typedef struct s_data
 
 
 //TOKENIZE
-void tokenize(t_data *data);
-void pop_operator(t_data *data, int *j);
-int find_word(char *s, int len, char *pattern);
-void pop_str(t_data *data, int *j);
-void sort_token(t_data *data);
-
-// UTILS
-int detection(char c, int *state);
 
 
 
