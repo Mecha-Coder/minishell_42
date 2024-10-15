@@ -406,4 +406,4 @@ run_mix_test() {
 # run_exit_status_test
 # run_and_or_test
 # run_wildcard_test
-run_mix_test
+# run_mix_test

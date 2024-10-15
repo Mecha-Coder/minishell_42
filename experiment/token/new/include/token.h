@@ -43,7 +43,12 @@ void sort_token(t_data *data);
 
 // UTILS
 int detection(char c, int *state);
+void point_index(int index);
 
-
+//VALIDATE
+int validate(t_data *data);
+void and(t_data *data, int *return_index);
+void redirect(t_data *data, int *return_index);
+void operator(t_data *data, int *return_index);
 
 #endif
