@@ -1,41 +1,27 @@
 #include "include/minishell.h"
 
-static int is_blank(char *s)
+static void initialize_data(t_data *data, char *s)
 {
-	while (*s)
-	{
-		if (!isspace(*s++))
-			return (FALSE);
-	}
-	return(TRUE);
-}
-
-static void initialize_data(t_data *data, char *ptr)
-{
-	data->origin = ptr;
-	strcpy(data->s, ptr);
-	data->s_len = strlen(ptr);
-
-	/*
-	printf("Origin: %s\n" 
-		   "Buffer: %s\n"
-		   "S_len : %d\n", data->origin, data->s, data->s_len);
-	*/
+	data->origin = s;
+	strcpy(data->s, s);
+	data->s_len = strlen(s);
 }
 
 int main(int ac, char **av)
 {
 	t_data data;
 
-	if (ac == 2 && !is_blank(av[1]))
+	if (ac == 2 && !is_blank(av[1]) && strlen(av[1]) < BUFFER_SIZE)
 	{
-		if (strlen(av[1]) < BUFFER_SIZE)
+		initialize_data(&data, av[1]);
+		printf("\n%s\n", data.origin);	
+		if (check_syntax_before(&data) && tokenize(&data)
+			&& check_syntax_after(&data))
 		{
-			initialize_data(&data, av[1]);	
-			check_syntax(&data);
+			printf("\nSyntax: " GREEN "OK\n" RESET);
 		}
-		else
-			printf("ERROR: Can't process. Input command too long");
-    }
+	}
+	else
+		printf("ERROR: Can't process. Input command too large");
 	return 0;
 }

@@ -1,4 +1,4 @@
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
 /* check_quote 
 Purpose: Single (') and double (") count must be even (paired). 
@@ -11,7 +11,7 @@ Return:
 #define DQ 1
 #define EVAL 2
 
-void quote(t_data *data, int *return_index)
+void before_quote(t_data *data, int *return_index)
 {
 	int i;
 	int detect;

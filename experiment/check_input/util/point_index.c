@@ -1,6 +1,6 @@
 #include "../include/minishell.h"
 
-void highlight_index(int index)
+void point_index(int index)
 {
 	int i;
 

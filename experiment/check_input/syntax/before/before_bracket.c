@@ -1,4 +1,4 @@
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
 /* check_bracket
 Purpose: () must be paired in this arrangement. Inside can't be empty (). 
@@ -27,19 +27,19 @@ static void check_content_inside(char *s, int i, int (*bracket)[2])
     }
 }
 
-void check_bracket(char *s, int *return_index)
+void before_bracket(t_data *data, int *return_index)
 {
 	int i;
 	int bracket[2];
-	int state;
+	int detect;
 
-	(i = -1, state = ON, bracket[COUNT] = 0);
-	while (bracket[COUNT] >= 0 && s[++i])
+	(i = -1, detect = ON, bracket[COUNT] = 0);
+	while (bracket[COUNT] >= 0 && data->s[++i])
 	{
-		if (!ignore_detection(s[i], &state))
+		if (!detection(data->s[i], &detect))
 		{
-			if      (s[i] == '(' && state == ON)   (bracket[COUNT]++, bracket[POS_OPEN] = i);
-			else if (s[i] == ')' && state == ON)   (bracket[COUNT]--, check_content_inside(s, i, &bracket));
+			if      (data->s[i] == '(' && detect == ON)   (bracket[COUNT]++, bracket[POS_OPEN] = i);
+			else if (data->s[i] == ')' && detect == ON)   (bracket[COUNT]--, check_content_inside(data->s, i, &bracket));
 		}
 	}
 	if (bracket[COUNT] > 0)       *return_index = bracket[POS_OPEN];

@@ -1,4 +1,4 @@
-#include "../include/token.h"
+#include "../include/minishell.h"
 
 /*
 void show_str(t_data *data)
@@ -59,7 +59,7 @@ void tokenize(t_data *data)
 */
 
 
-void tokenize(t_data *data)
+int tokenize(t_data *data)
 {
     int j;
 
