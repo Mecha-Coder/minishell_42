@@ -2,6 +2,8 @@
     "files.associations": {
         "*.ejs": "html",
         "stdlib.h": "c",
-        "token.h": "c"
+        "token.h": "c",
+        "compare": "c",
+        "type_traits": "c"
     }
 }

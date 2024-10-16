@@ -1,6 +1,6 @@
 #include "../include/token.h"
 
-
+/*
 void show_str(t_data *data)
 {
     int i = -1;
@@ -56,23 +56,21 @@ void tokenize(t_data *data)
     sort_token(data);
     show_token(data);
 }
+*/
 
 
+int tokenize(t_data *data)
+{
+    int j;
 
-// int tokenize(t_data *data)
-// {
-//     int j;
-
-//     j = 0;
-//     if (pop_operator(data, &j), j < TOKEN_SIZE)
-//     {
-//         if (pop_str(data, &j),  j < TOKEN_SIZE)
-//         {
-//             data->token[j] = (t_token){-1, -1, NULL};
-//             sort_token(data);
-//             return (TRUE);
-//         }
-//     }
-//     printf("Failed to tokenize, command too long\n");
-//     return (FALSE);
-// }
+    j = 0;
+    if ((pop_operator(data, &j), j < TOKEN_SIZE) 
+        && (pop_str(data, &j),  j < TOKEN_SIZE))
+    {
+        data->token[j] = (t_token){-1, -1, NULL};
+        sort_token(data);
+        return (TRUE);
+    }
+    printf("Failed to tokenize, command too long\n");
+    return (FALSE);
+}
