@@ -30,7 +30,7 @@ void before_quote(t_data *data, int *return_index)
 	}
 	if (count[SQ] % 2)       *return_index = pos[SQ];
 	else if (count[DQ] % 2)  *return_index = pos[DQ];
-	else                     *return_index = -1;
+	else                     (*return_index = -1, write(1,"[B1:OK]", sizeof("[B1:OK]")));
 }
 
 /*

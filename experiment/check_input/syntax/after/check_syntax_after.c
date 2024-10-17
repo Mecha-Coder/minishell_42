@@ -28,6 +28,7 @@ int check_syntax_after(t_data *data)
         || (after_operator(data, &index), trigger = 3, index >=0)
         || (after_bracket(data, &index), trigger = 4, index >=0))
     {
+        printf("\n\n%s\n", data->origin);
         return(indicate_syntax_error(index, trigger), FALSE);
     }
     return (TRUE);

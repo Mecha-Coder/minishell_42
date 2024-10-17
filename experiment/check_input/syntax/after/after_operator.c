@@ -31,5 +31,5 @@ void after_operator(t_data *data, int *return_index)
             }
         }
     }
-    *return_index = -1;
+    (*return_index = -1, printf("[A3:OK]"));
 }

@@ -44,7 +44,7 @@ void before_bracket(t_data *data, int *return_index)
 	}
 	if (bracket[COUNT] > 0)       *return_index = bracket[POS_OPEN];
     else if (bracket[COUNT] < 0)  *return_index = i;
-	else                          *return_index = -1;
+	else                          (*return_index = -1, write(1,"[B2:OK]", sizeof("[B2:OK]")));
 }
 
 /*

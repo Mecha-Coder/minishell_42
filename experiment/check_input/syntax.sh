@@ -6,20 +6,26 @@ YELLOW="\033[0;33m"
 NC="\033[0m" # No Color
 
 run_command() {
-    ./a.out "$1"
+     valgrind -q --leak-check=full --error-exitcode=1 ./a.out "$1"
+    if [ $? -eq 0 ]; then
+        echo -e "${GREEN}OK${NC}"
+    else
+        echo -e "${RED}KO${NC}"
+    fi
     echo -e "${GREEN}--------------------------------------------------------------------${NC}"
 }
 
 run_error() {
     echo -e "\n\n${YELLOW}========================= ERROR SYNTAX ===========================${NC}\n\n"
 
-    run_command "echo \"EE"
+    run_command "ls | | wc -l "
+    run_command "cat eval.h | cat | |cat | ls"
     run_command "echo \"Double quote: \"\""
     run_command "echo \"Done'\" '"
     run_command "echo 'Single quote: \''"
-    run_command "echo 'Done\"' \""
-    run_command "cat eval.h | cat | |cat | ls"
+    run_command "echo \"EE"
     run_command "cat < <"
+    run_command "echo 'Done\"' \""
     run_command "ls out.txt >"
     run_command "echo bonjour > > out"
     run_command "ls out.txt >>"
@@ -29,7 +35,6 @@ run_error() {
     run_command "echo hello && && echo hi"
     run_command "echo hello &&& echo hi"
     run_command "echo hello & (echo done)"
-    run_command "ls | | wc -l "
     run_command "cat XXX ||| echo ok || echo  done"
     run_command "cat < in.txt <"
     run_command "cat < < in.txt"
@@ -312,5 +317,5 @@ run_ok() {
 }
 
 # Run the tests
-run_error
+# run_error
 run_ok

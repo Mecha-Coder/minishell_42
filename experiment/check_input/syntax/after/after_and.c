@@ -13,5 +13,5 @@ void after_and(t_data *data, int *return_index)
     if (data->token[i].type == XAND)
         *return_index = data->token[i].index;
     else
-        *return_index = -1;
+        (*return_index = -1, printf("[A1:OK]"));
 }

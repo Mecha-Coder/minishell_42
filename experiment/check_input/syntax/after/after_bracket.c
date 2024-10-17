@@ -61,8 +61,10 @@ static int check_rule(t_token *token, int *bracket, int  start, int end)
     
     if (bracket[OB_LEFT] != -1 && bracket[OB_LEFT] != OR && bracket[OB_LEFT] != AND)
         return (bracket[OB_INDEX]);
+
     if (bracket[CB_RIGHT] != -1 &&  bracket[CB_RIGHT] != OR &&  bracket[CB_RIGHT] != AND)
         return (bracket[CB_INDEX]);
+
     if (bracket[OB_RIGHT] == OB  && bracket[CB_LEFT] == CB)
         return (bracket[OB_INDEX]);
 
@@ -129,11 +131,11 @@ void after_bracket(t_data *data, int *return_index)
             if (result >= 0)
             {
                 *return_index = data->token[result].index;
-                break;
+                return;
             }
             else
                 start = i + 1;
         }
     }
-    *return_index = -1;
+    (*return_index = -1, printf("[A4:OK]"));
 }

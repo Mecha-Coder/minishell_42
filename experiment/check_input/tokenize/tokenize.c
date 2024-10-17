@@ -14,7 +14,9 @@ void show_str(t_data *data)
     }
     printf("\n\n");
 }
+*/
 
+/*
 void show_token(t_data *data)
 {
     int i;
@@ -37,7 +39,9 @@ void show_token(t_data *data)
             printf("%-7s %s\n","<STR>", data->token[i].content);
     }
 }
+*/
 
+/*
 void tokenize(t_data *data)
 {
     int j;
@@ -69,8 +73,9 @@ int tokenize(t_data *data)
     {
         data->token[j] = (t_token){-1, -1, NULL};
         sort_token(data);
-        return (TRUE);
+        return (printf("[T:OK]"), TRUE);
     }
-    printf("Failed to tokenize, command too long\n");
+    printf(RED "\nFailed to tokenize, command too long\n" RESET);
     return (FALSE);
 }
+

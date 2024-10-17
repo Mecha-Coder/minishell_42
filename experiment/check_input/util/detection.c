@@ -23,7 +23,7 @@ int detection(char c, int *state)
 	trigger_no = 0;
 	if (c == '\"' && *state == ON)           (*state = DQ_OFF,   trigger_no = 1);
 	else if (c == '\'' && *state == ON)      (*state = SQ_OFF,   trigger_no = 2);
-	else if (c == '\"' && *state == DQ_OFF)  (*state = ON, trigger_no = 3); 
-	else if (c == '\'' && *state == SQ_OFF)  (*state = ON, trigger_no = 4);
+	else if (c == '\"' && *state == DQ_OFF)  (*state = ON,       trigger_no = 3); 
+	else if (c == '\'' && *state == SQ_OFF)  (*state = ON,       trigger_no = 4);
 	return (trigger_no);
 }

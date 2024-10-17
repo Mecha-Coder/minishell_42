@@ -19,6 +19,6 @@ void after_redirect(t_data *data, int *return_index)
             return;
         }
     }
-    *return_index = -1;
+    (*return_index = -1, printf("[A2:OK]"));
 }
 

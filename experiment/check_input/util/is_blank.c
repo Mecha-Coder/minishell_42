@@ -2,7 +2,7 @@
 
 int is_blank(char *s)
 {
-	while (*s)
+	while (s && *s)
 	{
 		if (!isspace(*s++))
 			return (FALSE);

@@ -26,6 +26,7 @@ int check_syntax_before(t_data *data)
         || (before_bracket(data, &index), trigger = 2, index >= 0)
         || (before_operator(data, &index), trigger =3 ,index >=0))
 	{
+		printf("\n\n%s\n", data->origin);
 		return (indicate_syntax_error(index, trigger), FALSE);
 	}
 	return (TRUE);

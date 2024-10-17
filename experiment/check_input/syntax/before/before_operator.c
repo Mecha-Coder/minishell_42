@@ -31,9 +31,9 @@ static int check_occurance(char *s, int *occurance)
 	int i;
 	int symbol;
 
-	if (!s && !(*s))
-		return 0;
 	(i = 0, *occurance = 1, symbol = s[i]);
+	if (!s || !(*s))
+		return 0;
 	while (s[++i] && symbol == s[i])
 		(*occurance)++;
 	return (*occurance);
@@ -46,17 +46,27 @@ void before_operator(t_data *data, int *return_index)
 	int loop;
 	int occurance;
 
-	(i = -1, detect = ON, loop = TRUE);
+	(i = -1, detect = ON, loop = TRUE, occurance = 0);
 	while(loop && data->s[++i])
 	{	
 		if (!detection(data->s[i], &detect) && detect == ON)
 		{
-			if ((symbol_A(data->s[i]) && check_occurance(&data->s[i], &occurance) > 2) 
-				|| (symbol_B(data->s[i]) && check_occurance(&data->s[i], &occurance) != 2))
-				loop = FALSE;
-			i = occurance - 1;
+			if (symbol_A(data->s[i]))
+			{
+				if (check_occurance(&data->s[i], &occurance) > 2)
+					loop = FALSE;
+				else
+					i += occurance - 1;
+			}
+			if (symbol_B(data->s[i]))
+			{
+				if (check_occurance(&data->s[i], &occurance) != 2)
+					loop = FALSE;
+				else
+					i += occurance - 1;
+			}
 		}
 	}
 	if (!loop)  *return_index = i;
-	else        *return_index = -1;
+	else        (*return_index = -1, write(1,"[B3:OK]", sizeof("[B3:OK]")));
 }
