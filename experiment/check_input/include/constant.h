@@ -25,6 +25,9 @@
 #define CB 9     // )
 #define STR 10   // Others
 
+#define CMD 11   // Group of <STR> 
+#define SUB 12   // Sub-shell
+
 //******************************************/
 
 #define ON 0

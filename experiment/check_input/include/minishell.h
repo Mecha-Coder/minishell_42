@@ -10,8 +10,16 @@
 #include <ctype.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 //*********************************************
+
+typedef struct s_env
+{
+    char *key;
+    char *val;
+    struct s_env *next;
+} t_env;
 
 typedef struct s_token
 {
@@ -20,13 +28,25 @@ typedef struct s_token
     char *content;
 } t_token;
 
+typedef struct s_tree
+{
+    t_token *token;
+    int type;
+    struct s_tree *left;
+    struct s_tree *right;
+    char *cmd[100];
+    int in[10];
+    int out [10];
+} t_tree;
 
 typedef struct s_data
 {
     char *origin;
     char s[BUFFER_SIZE];
     int s_len;
+    t_tree *root;
     t_token token[TOKEN_SIZE];
+    t_env *env;
 } t_data;
 
 
@@ -54,9 +74,20 @@ int find_word(char *s, int len, char *pattern);
 void pop_str(t_data *data, int *j);
 void sort_token(t_data *data);
 
+// TREE
+t_tree *create_node(void);
+void branch(t_tree *node, int i);
+void build_tree(t_tree *node);
+t_tree *create_node(void);
+int scan_bracket(t_tree *node);
+int scan_operator(t_tree *node);
+void visualize_tree(t_tree *node, int level);
+void destroy_tree(t_tree *node);
+
+
 // UTILS
 int detection(char c, int *state);
 void point_index(int index);
-int is_blank(char *s);
+int is_blank(char *s); // change to isempty
 
 #endif
