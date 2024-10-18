@@ -30,8 +30,10 @@ int main(int ac, char **av, char **env)
 				build_tree(data.root);
 				run_tree(data.root, data.env);
 				printf("\n");
+	
 				visualize_tree(data.root, 0);
 				printf("\n");
+
 				destroy_tree(data.root);
 			}
 		}

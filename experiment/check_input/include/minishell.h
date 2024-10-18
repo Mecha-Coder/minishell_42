@@ -84,6 +84,12 @@ int scan_operator(t_tree *node);
 void visualize_tree(t_tree *node, int level);
 void destroy_tree(t_tree *node);
 
+// ENV
+int create_env(t_data *data, char **env);
+void destroy_env(t_data *data);
+
+// RUN
+void run_tree(t_tree *node, t_env *head);
 
 // UTILS
 int detection(char c, int *state);

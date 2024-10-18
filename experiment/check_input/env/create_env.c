@@ -8,7 +8,7 @@
 //0 1 2 3 4 5 6 7 8 9
 //T E S T =
 
-char *extract_key(char *s, int i)
+static char *extract_key(char *s, int i)
 {
     char *key;
 
@@ -22,7 +22,7 @@ char *extract_key(char *s, int i)
     return (key); 
 }
 
-char *extract_val(char *s, int i)
+static char *extract_val(char *s, int i)
 {
     char *val;
 
@@ -41,7 +41,7 @@ char *extract_val(char *s, int i)
 
 } 
 
-t_env *create_env_node(char *s)
+static t_env *create_env_node(char *s)
 {
     t_env *new;
     int i;

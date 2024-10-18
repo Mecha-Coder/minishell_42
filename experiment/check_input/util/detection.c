@@ -13,9 +13,6 @@ Return:
 	4 : Single quote detected, detection ON
 */
 
-#define SQ_OFF 1
-#define DQ_OFF 2
-
 int detection(char c, int *state)
 {
 	int trigger_no;
