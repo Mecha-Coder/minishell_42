@@ -85,7 +85,7 @@ void sub_single_quote(char *s, int sub)
     if (sub)
     {
         target = '\'';
-        replace = '#';
+        replace = SUB_CHAR;
     }    
     else
     {
@@ -118,6 +118,7 @@ void run_tree(t_tree *node, t_env *head)
         {
             sub_single_quote(node->token[i].content, TRUE);
             remove_double_quote(node->token[i].content);
+            swap_var(node->token[i].content, head);
         }
     }
 }
