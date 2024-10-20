@@ -18,7 +18,7 @@ void pop_str(t_data *data, int *j)
         if (!blank(data->s[i]) && isstr == FALSE)
         {
             isstr = TRUE;
-            data->token[(*j)++] = (t_token){STR, i, &data->s[i]};
+            data->token[(*j)++] = (t_token){STR, i, &data->s[i], FALSE};
         }
         else if (blank(data->s[i]) && detect == ON)
         {

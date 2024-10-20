@@ -71,7 +71,7 @@ int tokenize(t_data *data)
     if ((pop_operator(data, &j), j < TOKEN_SIZE) 
         && (pop_str(data, &j),  j < TOKEN_SIZE))
     {
-        data->token[j] = (t_token){-1, -1, NULL};
+        data->token[j] = (t_token){-1, -1, NULL, FALSE};
         sort_token(data);
         return (printf("[T:OK]"), TRUE);
     }

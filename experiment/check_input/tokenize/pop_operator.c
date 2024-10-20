@@ -34,7 +34,7 @@ void pop_operator(t_data *data, int *j)
         index = find_word(data->s, data->s_len, pattern[i]);
         if (index >= 0)
         {
-            data->token[(*j)++] = (t_token){i, index, NULL};
+            data->token[(*j)++] = (t_token){i, index, NULL, FALSE};
             subtitute_null(data->s, index, strlen(pattern[i]));
         }
         else

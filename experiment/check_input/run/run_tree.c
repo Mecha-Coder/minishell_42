@@ -75,6 +75,25 @@ void remove_double_quote(char *s)
     }
 }
 
+void remove_single_quote(char *s)
+{
+    int i = -1;
+    int j;
+
+    while (s[++i])
+    {
+        if (s[i] == '\'')
+        {
+            j = 0;
+            while (s[i + j])
+            {
+                s[i + j] = s[i + j + 1];
+                j++;
+            }
+        }
+    }
+}
+
 void sub_single_quote(char *s, int sub)
 {
     int i;
@@ -82,25 +101,30 @@ void sub_single_quote(char *s, int sub)
     char target;
     char replace;
 
+    i = -1;
     if (sub)
     {
         target = '\'';
         replace = SUB_CHAR;
+          
+        while (s[++i])
+        {
+            if (detection(s[i], &detect), detect ==  DQ_OFF 
+                && s[i] == target)
+            {
+                s[i] = replace;
+            }
+        }
     }    
     else
     {
         target = SUB_CHAR;
         replace = '\'';
-    }
 
-
-    i = -1;
-    while (s[++i])
-    {
-        if (detection(s[i], &detect), detect ==  DQ_OFF 
-            && s[i] == target)
+        while (s[++i])
         {
-            s[i] = replace;
+            if (s[i] == target)
+                s[i] = replace;
         }
     }
 }
@@ -109,8 +133,9 @@ void run_tree(t_tree *node, t_env *head)
 {
     // int exit_status = 10;
     int i;
+    char *new;
 
-    i = -1;
+    i = -1, new = NULL;
     set_new_env(head);
     while (node->token[++i].type != -1)
     {
@@ -118,7 +143,14 @@ void run_tree(t_tree *node, t_env *head)
         {
             sub_single_quote(node->token[i].content, TRUE);
             remove_double_quote(node->token[i].content);
-            swap_var(node->token[i].content, head);
+            new = swap_var(node->token[i].content, head);
+            if (new)
+            {
+                node->token[i].content = new;
+                node->token[i].malloc = TRUE;
+            }
+            remove_single_quote(node->token[i].content);
+            sub_single_quote(node->token[i].content, FALSE);
         }
     }
 }
