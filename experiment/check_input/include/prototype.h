@@ -37,6 +37,7 @@ void destroy_tree(t_tree *node);
 int create_env(t_data *data, char **env);
 void destroy_env(t_data *data);
 char *get_value(char *s, int size, t_env *head);
+void view_env(t_data *data);
 
 // RUN
 void run_tree(t_tree *node, t_env *head);

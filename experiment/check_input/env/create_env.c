@@ -27,9 +27,7 @@ static char *extract_val(char *s, int i)
     char *val;
 
     s = s + i;
-    i = 0;
-    while (s[i])
-        i++;
+    i = strlen(s);
     val = (char *)malloc(i + 1);
     if (val)
     {
@@ -77,10 +75,10 @@ int create_env(t_data *data, char **env)
     return (TRUE);
 }
 
-/*
+
 int main(int ac, char **av, char **env)
 {
-    t_shell data;
+    t_data data;
     (void)ac;
     (void)av;
 
@@ -89,4 +87,4 @@ int main(int ac, char **av, char **env)
     destroy_env(&data);
     return 0;
 }
-*/
+
