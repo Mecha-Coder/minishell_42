@@ -20,13 +20,12 @@
 #define APPD 4   // >>
 #define WR 5     // >
 #define AND 6    // &&
-#define XAND 7   // &
-#define OB 8     // (
-#define CB 9     // )
-#define STR 10   // Others
+#define OB 7     // (
+#define CB 8     // )
+#define STR 9   // Others
 
-#define CMD 11   // Group of <STR> 
-#define SUB 12   // Sub-shell
+#define CMD 10   // Group of <STR> 
+#define SUB 11   // Sub-shell
 
 //******************************************/
 

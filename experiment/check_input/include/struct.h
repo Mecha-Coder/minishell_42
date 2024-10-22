@@ -26,7 +26,7 @@ typedef struct s_tree
     struct s_tree *right;
     char *cmd[100];
     int in[10];
-    int out [10];
+    int out[10];
 } t_tree;
 
 typedef struct s_data

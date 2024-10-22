@@ -9,5 +9,4 @@ void build_tree(t_tree *node)
     }
     else if (!scan_bracket(node))
         node->type = CMD;
-        
 }

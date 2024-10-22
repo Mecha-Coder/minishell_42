@@ -1,6 +1,6 @@
 #include "../include/minishell.h"
 
-static void initialize_pattern(char pattern[11][3])
+static void initialize_pattern(char pattern[10][3])
 {
     strcpy(pattern[OR], "||");
     strcpy(pattern[PIPE], "|");
@@ -9,10 +9,9 @@ static void initialize_pattern(char pattern[11][3])
     strcpy(pattern[APPD], ">>");
     strcpy(pattern[WR], ">");
     strcpy(pattern[AND], "&&");
-    strcpy(pattern[XAND], "&");
     strcpy(pattern[OB], "(");
     strcpy(pattern[CB], ")");
-    pattern[10][0] = '\0';
+    pattern[9][0] = '\0';
 }
 
 static void subtitute_null(char *s, int i, int size)
@@ -25,7 +24,7 @@ void pop_operator(t_data *data, int *j)
 {
     int i;
     int index;
-    char pattern[11][3];
+    char pattern[10][3];
     
     i = 0;
     initialize_pattern(pattern);

@@ -28,7 +28,7 @@ typedef struct s_tree
     // During creation memset these values
     char *cmd[CMD_SIZE];    // NULL
     int in[OPEN_FD_SIZE];   // Must be > 2
-    int out [OPEN_FD_SIZE]; // Must be > 2
+    int out[OPEN_FD_SIZE]; // Must be > 2
 } t_tree;
 
 typedef struct s_shell

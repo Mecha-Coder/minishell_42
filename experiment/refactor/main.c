@@ -49,7 +49,7 @@ int parse(t_shell *data, int ac, char **av)
     return (check_syntax_before(&data)
         && tokenize(&data)
         && check_syntax_after(&data)
-        && build_tree(&data));
+        && build_ast(&data));
 }
 
 void end(t_shell *data)
