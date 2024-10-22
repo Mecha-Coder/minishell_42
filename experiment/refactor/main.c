@@ -52,6 +52,11 @@ int parse(t_shell *data, int ac, char **av)
         && build_ast(&data));
 }
 
+int execute(t_shell *data)
+{
+    descent_tree(data->tree, data->env);
+}
+
 void end(t_shell *data)
 {
     clear_env(&data);

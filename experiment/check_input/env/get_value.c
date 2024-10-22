@@ -3,9 +3,9 @@
 char *get_value(char *s, int size, t_env *head)
 {
     t_env *current;
-    char key[100];
+    char key[BUFFER_SIZE];
 
-    if (size >= 100)
+    if (size >= BUFFER_SIZE)
         return (NULL);
     current = head;
     memset(&key, 0, sizeof(key));

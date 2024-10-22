@@ -2,7 +2,7 @@
 
 int build_tree(t_tree *node);
 
-/* Test - Run with script*/
+/* Test - Run with script
 int main(int ac, char **av)
 {
     t_shell data;
@@ -25,6 +25,7 @@ int main(int ac, char **av)
     }
     return (0);
 }
+*/
 
 /* build_ast
 Purpose: Based on the token list, create Abstract Syntax Tree (AST)
