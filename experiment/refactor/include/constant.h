@@ -53,7 +53,7 @@
 #define FAIL_AST "\n\033[1m\033[31mERROR: " \
                     "\033[0mFailed to build AST\n"
 
-#define FAIL_TRANSFORM "\n\033[1m\033[31mERROR: " \
+#define FAIL_SWAP "\n\033[1m\033[31mERROR: " \
                     "\033[0mFailed to execute. Can't tranform:\n"
 
 //******************************************************/

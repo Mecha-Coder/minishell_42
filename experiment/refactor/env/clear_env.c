@@ -16,5 +16,4 @@ void clear_env(t_shell *data)
         free(current);
         current = temp;
     }
-    data->env = NULL;
 }

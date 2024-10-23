@@ -1,7 +1,6 @@
 #include "../include/minishell.h"
 
 int get_len(char *s);
-char *join3(char *s1, char *s2, char *s3);
 
 /* Test 
 Test case
@@ -9,21 +8,21 @@ $USER
 $USER$HOME
 User:_$USER
 This_$USER$HOME
-*/
 
 int main()
 {
-    char s[] = "$USER";
+    char s[] = "This_$USER$HOME";
     int size = 4;
 
-    char *sub= NULL;
-    int i = 0;
+    char *sub= "[new]";
+    int i = 5;
 
     s[i] = '\0';
     char *new = join3(s, sub, &s[i + size + 1]);
     printf("%s\n", new);
     free(new);
 }
+*/
 
 char *join3(char *s1, char *s2, char *s3)
 {

@@ -3,11 +3,12 @@
 int is_alphabet(char c);
 int is_digit(char c);
 int is_alnum(char c);
+int is_identifier(char *s, int *i);
 
 /* Test 
 
 [OK]
-./a.out "hello_world1"
+./a.out "hello_world1
 ./a.out "varName"
 ./a.out "_underscore"
 ./a.out "item1"
@@ -37,10 +38,13 @@ int is_alnum(char c);
 ./a.out "\!loo"
 
 int main(int ac, char **av) 
-{    
+{   
+    int i;
+
     if (ac == 2 && av[1][0])
     {
-        printf("identifier size = %d\n", is_identifier(av[1]));
+        printf("identifier size = %d", is_identifier(av[1], &i));
+        printf("/ %d\n", i);
 
         // if (is_identifier(av[1]))
         //     printf(GREEN "Valid identifier = " RESET "\"%s\"\n", av[1]);
@@ -51,11 +55,8 @@ int main(int ac, char **av)
 }
 */
 
-
 /* is_identifier
 Purpose: Check the first sub-string is an identifier
-    
-    Example: _Hello#55 (Lenght: 6)
 
 RULE
 =====
@@ -66,24 +67,24 @@ alphanumeric = alphabet + digit
 alphabet = [_][a-z][A-Z]
 digital  = [0-9]
 
-Return :
+Example: _Hello#55 (Lenght: 6)
+
+Return:
     0   : No identifier found
     0 > : Lenght of the identifer found
 */
 
-int is_identifier(char *s)
+int is_identifier(char *s, int *i)
 {
-    int i;
-
-    i = 0;
-    if (!is_alphabet(s[i]))
-        return (i);
-    while(s[++i])
+    *i = 0;
+    if (!is_alphabet(s[*i]))
+        return (*i);
+    while(s[++(*i)])
     {
-        if (!is_alnum(s[i]))
-            return (i);
+        if (!is_alnum(s[*i]))
+            return (*i);
     }
-    return (i);
+    return (*i);
 }
 
 int is_alphabet(char c) 

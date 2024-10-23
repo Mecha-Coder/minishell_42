@@ -18,7 +18,7 @@ int main(int ac, char **av, char **env)
 Purpose: Search the environment for value correspond to key
 Return :
     OK : String value correspond to key
-    KO : Key not found
+    KO : NULL (Key not found)
 */
 char *get_value(char *s, int size, t_env *head)
 {

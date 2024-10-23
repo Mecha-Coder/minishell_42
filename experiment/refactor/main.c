@@ -2,8 +2,8 @@
 
 int start(t_shell *data, char **env);
 int parse(t_shell *data, int ac, char **av);
+void execute(t_shell *data);
 void end(t_shell *data);
-
 
 /* Main
 Purpose: Act as startpoint when readline receive input
@@ -18,11 +18,9 @@ int main(int ac, char **av, char **env)
     // ------------------------------------------------------------------------
     // When receive input from realine
 
-    (parse(&data, ac, av) && execute(&data));
+    if (parse(&data, ac, av)) execute(&data);
 
     // Execute input and reset for next command
-
-
 
 
     // ------------------------------------------------------------------------
@@ -34,7 +32,9 @@ int main(int ac, char **av, char **env)
 
 int start(t_shell *data, char **env)
 {
-    return (setup_env(&data, env));
+    memset(data, 0, sizeof(t_shell));
+    data->token[0].type = -1;
+    return (setup_env(data, env));
 }
 
 int parse(t_shell *data, int ac, char **av)
@@ -46,18 +46,21 @@ int parse(t_shell *data, int ac, char **av)
     strcpy(data->s, av[1]);
     data->s_len = strlen(av[1]);
 
-    return (check_syntax_before(&data)
-        && tokenize(&data)
-        && check_syntax_after(&data)
-        && build_ast(&data));
+    return (check_syntax_before(data)
+        && tokenize(data)
+        && check_syntax_after(data)
+        && build_ast(data));
 }
 
-int execute(t_shell *data)
+void execute(t_shell *data)
 {
-    descent_tree(data->tree, data->env);
+    run_ast(data);
+    show_ast(data);
 }
 
 void end(t_shell *data)
 {
-    clear_env(&data);
+    clear_env(data);
+    clear_ast(data);
+    free_str_token(data);
 }

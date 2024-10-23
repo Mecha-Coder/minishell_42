@@ -12,5 +12,4 @@ static void clear_tree(t_tree *node)
 void clear_ast(t_shell *data)
 {
     clear_tree(data->tree);
-    data->tree = NULL;
 }

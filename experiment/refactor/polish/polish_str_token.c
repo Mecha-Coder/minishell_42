@@ -1,5 +1,8 @@
 #include "../include/minishell.h"
 
+void del_double_quote(char *s);
+void del_single_quote(char *s);
+
 /* polish_str_token
 Purpopse: Transform string inside <STR> token into a useful form.
 
@@ -28,10 +31,8 @@ int polish_str_token(t_token *token, t_env *list)
                 token[i].malloc = TRUE;
             }
             else
-            {
-                printf(FAIL_TRANSFORM "%s\n", token[i].content);
-                return (FALSE);
-            }
+                return (printf(FAIL_SWAP "%s\n", token[i].content), 
+                    FALSE);
             del_single_quote(token[i].content);
             sub_single_quote(token[i].content, FALSE);
         }
@@ -39,3 +40,39 @@ int polish_str_token(t_token *token, t_env *list)
     return (TRUE);
 }
 
+void del_double_quote(char *s)
+{
+    int i;
+    int j;
+    int detect;
+
+    (i = -1, detect = TRUE);
+    while (s[++i])
+    {
+        if (s[i] == '\'') 
+            detect = !detect;
+        if (detect && s[i] == '\"')
+        {
+            j = -1;
+            while (++j, s[i + j])
+                s[i + j] = s[i + j + 1];
+        }
+    }
+}
+
+void del_single_quote(char *s)
+{
+    int i;
+    int j;
+
+    i = -1;
+    while (s[++i])
+    {
+        if (s[i] == '\'')
+        {
+            j = -1;
+            while (++j, s[i + j])
+                s[i + j] = s[i + j + 1];
+        }
+    }
+}
