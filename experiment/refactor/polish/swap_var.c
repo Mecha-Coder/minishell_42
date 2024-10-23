@@ -66,6 +66,9 @@ char *insert_var(char *s, int i, int *len, t_env *list)
     s[i] = '\0';
     var_value = get_value(&s[i + 1], *len, list);
     result = join3(s, var_value, &s[i + *len + 1]);
-    *len = strlen(var_value);
+    if (var_value)
+        *len = strlen(var_value);
+    else
+        *len = 0;
     return (result);
 }

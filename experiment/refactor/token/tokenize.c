@@ -65,6 +65,7 @@ int tokenize(t_shell *data)
     {
         data->token[j] = (t_token){-1, -1, NULL, FALSE};
         sort_token(data);
+        data->token_len = token_len(data->token);
         return (TRUE);
     }
     return (printf(FAIL_TOKEN), FALSE);

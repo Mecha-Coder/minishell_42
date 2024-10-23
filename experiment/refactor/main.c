@@ -32,8 +32,12 @@ int main(int ac, char **av, char **env)
 
 int start(t_shell *data, char **env)
 {
+    int i;
+
+    i = -1;
     memset(data, 0, sizeof(t_shell));
-    data->token[0].type = -1;
+    while (++i)
+        data->token[i].type = -1;
     return (setup_env(data, env));
 }
 
@@ -54,6 +58,7 @@ int parse(t_shell *data, int ac, char **av)
 
 void execute(t_shell *data)
 {
+    printf("\n%s\n", data->input);
     run_ast(data);
     show_ast(data);
 }

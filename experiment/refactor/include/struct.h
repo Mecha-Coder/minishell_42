@@ -41,6 +41,7 @@ typedef struct s_shell
     int s_len;
     t_tree *tree;
     t_token token[CMD_SIZE];
+    int token_len;
 } t_shell;
 
 #endif
