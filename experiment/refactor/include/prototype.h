@@ -36,6 +36,7 @@ int scan_operator(t_tree *node);
 
 //EXECUTE
 void run_ast(t_shell *data);
+void prep_exe(t_tree *node);
 
 //POLISH
 int polish_str_token(t_token *token, t_env *list);

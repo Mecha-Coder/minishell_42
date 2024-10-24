@@ -8,6 +8,6 @@ int main(int ac, char **av, char **env)
     (void)ac;
     (void)av;
     while (env[++i])
-        printf("%d) %s\n", i, env[i]);
+        printf("%s\n", env[i]);
     return (0);
 }
