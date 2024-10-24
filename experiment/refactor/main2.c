@@ -2,7 +2,7 @@
 
 int parse(t_shell *data)
 {
-    if (isempty(data->input))                return (FALSE);
+    if (is_empty(data->input))                return (FALSE);
     if (strlen(data->input) >= BUFFER_SIZE)  return (printf(LONG_INPUT), FALSE);
     
     add_history(data->input);

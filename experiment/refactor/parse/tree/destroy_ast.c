@@ -9,7 +9,7 @@ static void clear_tree(t_tree *node)
     free(node);
 }
 
-void clear_ast(t_shell *data)
+void destroy_ast(t_shell *data)
 {
     clear_tree(data->tree);
 }

@@ -1,6 +1,5 @@
 #include "../include/minishell.h"
 
-int setup_env(t_shell *data, char **env);
 static t_env *create_env_node(char *s);
 static char *extract_key(char *s, int i);
 static char *extract_val(char *s, int i);

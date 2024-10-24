@@ -3,7 +3,6 @@
 int is_alphabet(char c);
 int is_digit(char c);
 int is_alnum(char c);
-int is_identifier(char *s, int *i);
 
 /* Test 
 

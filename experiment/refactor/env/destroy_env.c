@@ -1,6 +1,6 @@
 #include "../include/minishell.h"
 
-void clear_env(t_shell *data)
+void destroy_env(t_shell *data)
 {
     t_env *current;
     t_env *temp;

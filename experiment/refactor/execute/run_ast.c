@@ -1,5 +1,5 @@
 #include "../include/minishell.h"
-
+/*
 char **get_envp(t_env *current)
 {
     int i;
@@ -34,12 +34,12 @@ void free_list(char **list)
         free(list[i]);
     free(list);
 }
-
+*/
 
 int descent_tree(t_tree *node, t_env *list)
 {
-    char **envp;
-    pid_t pid;
+    // char **envp;
+    // pid_t pid;
 
     if (!node)
         return (FALSE);
@@ -47,19 +47,19 @@ int descent_tree(t_tree *node, t_env *list)
     {
         if (polish_str_token(node->token, list))
         {
-            prep_exe(node);
-            if (!strcmp(node->cmd[0],"echo"))
-                builtin_echo(node->cmd);
-            else
-            {
-                envp = get_envp(list);
-                pid = fork();
-                if (pid == 0)
-                    execve("/usr/bin/cat", node->cmd, envp);
-                else
-                    wait(NULL);
-                free_list(envp);
-            }
+            // prep_exe(node);
+            // if (!strcmp(node->cmd[0],"echo"))
+            //     builtin_echo(node->cmd);
+            // else
+            // {
+            //     envp = get_envp(list);
+            //     pid = fork();
+            //     if (pid == 0)
+            //         execve("/usr/bin/cat", node->cmd, envp);
+            //     else
+            //         wait(NULL);
+            //     free_list(envp);
+            // }
         }
     }
     descent_tree(node->left, list);

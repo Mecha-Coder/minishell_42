@@ -8,11 +8,11 @@ Return  :
     OK  : TRUE
     KO  : FALSE
 */
-int isempty(char *s)
+int is_empty(char *s)
 {
 	while (s && *s)
 	{
-		if (!blankchar(*s++))
+		if (!blank_char(*s++))
 			return (FALSE);
 	}
 	return(TRUE);

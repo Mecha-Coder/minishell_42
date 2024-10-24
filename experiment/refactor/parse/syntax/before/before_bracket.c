@@ -83,7 +83,7 @@ static void check_inside(char *s, int i, int *bracket)
         return;
     while (s[--i] != '(')
     {
-        if (!blankchar(s[i]))
+        if (!blank_char(s[i]))
             return;
     }
      bracket[COUNT] = -1;

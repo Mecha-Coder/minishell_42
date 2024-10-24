@@ -43,7 +43,7 @@ int start(t_shell *data, char **env)
 
 int parse(t_shell *data, int ac, char **av)
 {
-    if (ac != 2 || isempty(av[1]))     return (FALSE);
+    if (ac != 2 || is_empty(av[1]))     return (FALSE);
     if (strlen(av[1]) >= BUFFER_SIZE)  return (printf(LONG_INPUT), FALSE);
     
     data->input = av[1];
@@ -58,14 +58,14 @@ int parse(t_shell *data, int ac, char **av)
 
 void execute(t_shell *data)
 {
-    //printf("\n%s\n", data->input);
+    printf("\n%s\n", data->input);
     run_ast(data);
-    //show_ast(data);
+    show_ast(data);
 }
 
 void end(t_shell *data)
 {
-    clear_env(data);
-    clear_ast(data);
+    destroy_env(data);
+    destroy_ast(data);
     free_str_token(data);
 }

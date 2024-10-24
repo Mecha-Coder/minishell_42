@@ -43,7 +43,7 @@ int build_ast(t_shell *data)
             return (TRUE);
     }
     printf(FAIL_AST);
-    clear_ast(data);
+    destroy_ast(data);
     return (FALSE);
 }
 

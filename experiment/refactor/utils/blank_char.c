@@ -1,6 +1,6 @@
 #include "../include/minishell.h"
 
-int blankchar(char c)
+int blank_char(char c)
 {
     return (c == ' ' || c == '\t');
 }
