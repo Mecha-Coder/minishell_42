@@ -18,7 +18,7 @@ int polish_str_token(t_token *token, t_env *list)
     int i;
 
     i = -1;
-    while (token[++i].type != -1)
+    while (token[++i].type)
     {
         if (token[i].type == STR)
         {   

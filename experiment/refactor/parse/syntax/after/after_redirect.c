@@ -13,7 +13,7 @@ void after_redirect(t_shell *data, int *return_index, int *trigger)
     int i;
 
     (i = -1, *trigger = 1);
-    while (data->token[++i].type != -1)
+    while (data->token[++i].type)
     {
         if (data->token[i].type >= HERE && data->token[i].type <= WR
             && data->token[i + 1].type != STR)

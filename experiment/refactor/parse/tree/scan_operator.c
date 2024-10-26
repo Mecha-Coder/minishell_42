@@ -38,7 +38,7 @@ int scan_operator(t_tree *node)
 void branch(t_tree *node, int i)
 {
     node->type = node->token[i].type;
-    node->token[i].type = -1;
+    node->token[i].type = 0;
 
     node->left = create_node();
     node->right = create_node();

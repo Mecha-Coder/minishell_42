@@ -63,7 +63,7 @@ int tokenize(t_shell *data)
     if ((pop_operator(data, &j), j < CMD_SIZE) 
         && (pop_str(data, &j),  j < CMD_SIZE))
     {
-        data->token[j] = (t_token){-1, -1, NULL, FALSE};
+        data->token[j] = (t_token){0, -1, NULL, FALSE};
         sort_token(data);
         data->token_len = token_len(data->token);
         return (TRUE);

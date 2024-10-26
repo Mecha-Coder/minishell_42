@@ -33,7 +33,7 @@ void after_bracket(t_shell *data, int *return_index, int *trigger)
     int result;
 
     (i = -1, count = 0, start = 0, *trigger = 3);
-    while (data->token[++i].type != -1)
+    while (data->token[++i].type)
     {
         if (data->token[i].type == OB) 
             count++;

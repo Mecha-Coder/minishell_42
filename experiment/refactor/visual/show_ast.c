@@ -5,7 +5,7 @@ static void show_token_2(t_token *token)
     int i;
 
     i = -1;
-    while(token[++i].type  != -1)
+    while(token[++i].type)
     {
         if (token[i].type == OR)         printf("%s","<OR>");
         else if (token[i].type == PIPE)  printf("%s","<PIPE>");

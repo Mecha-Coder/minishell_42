@@ -14,7 +14,7 @@ void sort_token(t_shell *data)
     while (swap_count)
     {
         (swap_count = 0, i = 0);
-        while (data->token[i + 1].type >= 0)
+        while (data->token[i + 1].type)
         {
             if (data->token[i].index > data->token[i + 1].index)
             {

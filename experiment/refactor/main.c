@@ -32,12 +32,7 @@ int main(int ac, char **av, char **env)
 
 int start(t_shell *data, char **env)
 {
-    int i;
-
-    i = -1;
     memset(data, 0, sizeof(t_shell));
-    while (++i)
-        data->token[i].type = -1;
     return (setup_env(data, env));
 }
 

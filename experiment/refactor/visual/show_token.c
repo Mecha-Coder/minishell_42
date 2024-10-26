@@ -6,7 +6,7 @@ int show_token(t_shell *data)
 
     i = -1;
     printf("\n\n");
-    while (data->token[++i].type >= 0)
+    while (data->token[++i].type)
     {
         if (data->token[i].type == OR)         printf("%-7s\n","<OR>");
         else if (data->token[i].type == PIPE)  printf("%-7s\n","<PIPE>");

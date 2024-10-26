@@ -337,5 +337,5 @@ run_ok() {
 }
 
 # Run the tests
-# run_error
+run_error
 run_ok

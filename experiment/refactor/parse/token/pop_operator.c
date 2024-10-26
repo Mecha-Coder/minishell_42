@@ -16,9 +16,9 @@ void pop_operator(t_shell *data, int *j)
 {
     int i;
     int index;
-    char pattern[10][3];
+    char pattern[11][3];
     
-    i = 0;
+    i = 1;
     initialize_pattern(pattern);
     while(*j < CMD_SIZE && pattern[i][0])
     {   
@@ -44,7 +44,7 @@ static void initialize_pattern(char pattern[10][3])
     strcpy(pattern[AND], "&&");
     strcpy(pattern[OB], "(");
     strcpy(pattern[CB], ")");
-    pattern[9][0] = '\0';
+    pattern[10][0] = '\0';
 }
 
 static void subtitute_null(char *s, int i, int size)

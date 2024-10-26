@@ -62,19 +62,19 @@
 
 //******************************************************/
 
-#define OR 0     // ||
-#define PIPE 1   // |
-#define HERE 2   // <<
-#define RD 3     // <
-#define APPD 4   // >>
-#define WR 5     // >
-#define AND 6    // &&
-#define OB 7     // (
-#define CB 8     // )
-#define STR 9   // Others
+#define OR 1     // ||
+#define PIPE 2   // |
+#define HERE 3   // <<
+#define RD 4     // <
+#define APPD 5   // >>
+#define WR 6     // >
+#define AND 7    // &&
+#define OB 8     // (
+#define CB 9     // )
+#define STR 10   // Others
 
-#define CMD 10   // Group of <STR> 
-#define SUB 11   // Sub-shell
+#define CMD 11   // Group of <STR> 
+#define SUB 12   // Sub-shell
 
 //******************************************/
 

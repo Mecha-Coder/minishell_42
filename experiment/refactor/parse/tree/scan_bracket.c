@@ -12,7 +12,7 @@ int  scan_bracket(t_tree *node)
         {
             bracket++;
             if (bracket == 1)
-                node->token[i].type = -1;
+                node->token[i].type = 0;
         }
         else if (node->token[i].type == OB)
             bracket--;
