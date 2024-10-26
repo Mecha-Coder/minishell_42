@@ -93,13 +93,13 @@ static int check_rule(t_token *token, int *bracket, int  start, int end)
 {
     determine_neighbor(token, bracket, start, end);
     
-    if (bracket[OB_LEFT] != -1 
+    if (bracket[OB_LEFT] != 0 
         && bracket[OB_LEFT] != OR 
         && bracket[OB_LEFT] != AND)
     {
         return (bracket[OB_INDEX]);
     }
-    if (bracket[CB_RIGHT] != -1 
+    if (bracket[CB_RIGHT] != 0
         &&  bracket[CB_RIGHT] != OR 
         &&  bracket[CB_RIGHT] != AND)
     {
@@ -113,12 +113,12 @@ static int check_rule(t_token *token, int *bracket, int  start, int end)
 static void determine_neighbor(t_token *token, int *bracket, int  start, int end)
 {
     if (bracket[OB_INDEX] == start)
-        bracket[OB_LEFT] = -1;
+        bracket[OB_LEFT] = 0;
     else
         bracket[OB_LEFT] = token[bracket[OB_INDEX] - 1].type;
     
     if (bracket[CB_INDEX] == end)
-        bracket[CB_RIGHT] = -1;
+        bracket[CB_RIGHT] = 0;
     else 
         bracket[CB_RIGHT] = token[bracket[CB_INDEX] + 1].type;
    

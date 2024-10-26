@@ -20,6 +20,7 @@ static void show_token_2(t_token *token)
     }
 }
 
+/*
 static void show_cmd(char **cmd)
 {
     int i;
@@ -29,6 +30,7 @@ static void show_cmd(char **cmd)
     while (cmd[++i])
         printf("%s, ", cmd[i]);
 }
+*/
 
 static void show_info(t_tree *node)
 {
@@ -40,7 +42,7 @@ static void show_info(t_tree *node)
         if (node->type == CMD)  printf("%-7s","CMD");
         if (node->type == SUB)  printf("%-7s","SUB");
         show_token_2(node->token);
-        show_cmd(node->cmd);
+        //show_cmd(node->cmd);
     }   
     printf("\n");
 }
