@@ -4,22 +4,39 @@ static char *extract_path(char *s, int len, int add_slash);
 static char **break_lvl(char *s, int len, char **result);
 static char **allocate(char *s, int len);
 
-/* Test
-int main()
+/* Test 
+void show_result(char **result)
 {
-    char *s = "/usr/games:/usr/local/games:/snap/bin";
-    char **result;
-    int i = -1;
+    int i;
 
-    result = get_path_lvl(&s[10 + 1], 15);
+    i = -1;
     while(result[++i])
         printf("%s\n", result[i]);
+    printf("\n\n");
     free_list(result);
+}
+
+int main()
+{
+    int i;
+    int j;
+    int start;
+    char *s = "/usr/games:/usr/local/games:/snap/bin:/usr/bin";
+    
+    (i = -1, start = 0, j = 0);
+    while (s[++i])
+    {
+        if (s[i] == ':' || (s[i + 1] == '\0' && ++j))
+        {
+            show_result(get_path_lvl(&s[start], i - start + j));
+            start = i + 1;
+        }
+    }    
 }
 */
 
-/* get_path_lvl
-Purpose: Break down file path into each hierarchical directory level.
+/* path_lvl
+Purpose: Break down filepath into each hierarchical directory level.
  
  Input:  /usr/local/sbin
  Output:
@@ -29,7 +46,7 @@ Purpose: Break down file path into each hierarchical directory level.
                    ↑
   Note: The lst path should end with a "/" (backslash).
  */
-char **get_path_lvl(char *s, int len)
+char **path_lvl(char *s, int len)
 {
     char **result;
     result = allocate(s, len);
@@ -41,18 +58,18 @@ char **get_path_lvl(char *s, int len)
 static char **allocate(char *s, int len)
 {
     int i;
-    int slot;
+    int size;
 
-    (i = -1, slot = 0);
+    (i = -1, size = 0);
     while (i++ < len)
     {
         if (s[i] == '/')
-            slot++;
+            size++;
     }
-    return ((char **)malloc(sizeof(char *) * (slot + 1)));
+    return ((char **)malloc(sizeof(char *) * (size + 1)));
 }
 
-static char  **break_lvl(char *s, int len, char **result)
+static char **break_lvl(char *s, int len, char **result)
 {
     int i;
     int j;

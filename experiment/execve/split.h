@@ -10,8 +10,10 @@
 #define TRUE 1
 #define FALSE 0
 
-char **get_path_lvl(char *s, int len);
+char **path_lvl(char *s, int len);
 void free_list(char **result);
-char **get_path(char **env);
+char **all_path(char **env);
+int	get_len(char *s);
+char	*join_str(char *s1, char *s2);
 
 #endif
