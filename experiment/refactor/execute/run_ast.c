@@ -69,5 +69,7 @@ int descent_tree(t_tree *node, t_env *list)
 
 void run_ast(t_shell *data)
 {
-    descent_tree(data->tree, data->env);
+    data->exit_code = descent_tree(data->tree, data->env);
 }
+
+ls | wc | cat 

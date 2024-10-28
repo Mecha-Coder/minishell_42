@@ -25,7 +25,12 @@ int left(int *fd, int flow, char **env)
         perror("execlp ls failed");
         exit(EXIT_FAILURE);
     }
-    return (waitpid(id, &status,0), status);
+    else
+    {
+        waitpid(id, &status,0);
+        close(fd[0]);
+    }
+    return (status);
 }
 
 int right(int *fd, int flow, char **env)
@@ -45,10 +50,15 @@ int right(int *fd, int flow, char **env)
         perror("execlp wc failed");
         exit(EXIT_FAILURE);
     }
-    return (waitpid(id, &status, 0), status);
+    else
+    {
+        waitpid(id, &status, 0);
+        close(fd[1]);
+    }
+    return (status);
 }
 
-int main(int ac, char **av, char **env) 
+int main(int ac, char **av, char **env) //pipe
 {
     int fd[2];
 
@@ -58,10 +68,7 @@ int main(int ac, char **av, char **env)
     if (pipe(fd) < 0) {perror("pipe failed"); exit(EXIT_FAILURE);}
 
     left(fd, OUT, env);
-    close(fd[1]);
-
-    right(fd, IN, env);
-    close(fd[0]);
+    exit_code = right(fd, IN, env);  12
 
     return 0;
 }
