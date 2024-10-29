@@ -1,6 +1,6 @@
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-void prep_exe(t_tree *node)
+void prep_cmd(t_tree *node)
 {
     int len;
     int i;
@@ -11,7 +11,7 @@ void prep_exe(t_tree *node)
         if (node->token[i].type == STR)
         {
             node->cmd[i] = node->token[i].content;
-            //node->token[i].type = -1;
+            node->token[i].type = 0;
         }
     }
 }

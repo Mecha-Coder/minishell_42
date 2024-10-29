@@ -12,7 +12,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <sys/types.h>
-//#include <sys/wait.h>
+#include <sys/wait.h>
 
 #include "constant.h"
 #include "struct.h"

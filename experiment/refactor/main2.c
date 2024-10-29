@@ -17,7 +17,7 @@ int parse(t_shell *data)
 
 void reset(t_shell *data)
 {
-    clear_ast(data);
+    destroy_ast(data);
     free_str_token(data);
 }
 
@@ -53,7 +53,7 @@ int main(int ac, char **av, char **env)
 
     interective_mode(&data);
 
-    clear_env(&data);
+    destroy_env(&data);
     rl_clear_history();
     return (0);
 }

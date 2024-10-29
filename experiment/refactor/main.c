@@ -53,9 +53,9 @@ int parse(t_shell *data, int ac, char **av)
 
 void execute(t_shell *data)
 {
-    printf("\n%s\n", data->input);
+    //printf("\n%s\n", data->input);
     run_ast(data);
-    show_ast(data);
+    //show_ast(data);
 }
 
 void end(t_shell *data)
