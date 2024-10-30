@@ -5,14 +5,14 @@
 
 //EXECUTE
 void run_ast(t_shell *data);
-int run_cmd(t_tree *node, t_env *list);
+int run_cmd(t_tree *node, t_shell *data);
 
 //POLISH
-int polish_str_token(t_token *token, t_env *list);
+int polish_str_token(t_token *token, t_shell *data);
 char *get_value(char *s, int size, t_env *head);
 int is_identifier(char *s, int *i);
 char *join3(char *s1, char *s2, char *s3);
-char *swap_var(char *s, t_env *list);
+char *swap_var(char *s, t_shell *data);
 void sub_single_quote(char *s, int convert_status);
 
 //PATH

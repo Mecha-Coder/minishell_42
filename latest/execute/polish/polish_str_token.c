@@ -13,7 +13,7 @@ Return:
     OK : TRUE
     KO : FALSE (Failed to tranforn due to malloc)
 */
-int polish_str_token(t_token *token, t_env *list)
+int polish_str_token(t_token *token, t_shell *data)
 {
     int i;
 
@@ -26,7 +26,7 @@ int polish_str_token(t_token *token, t_env *list)
             del_double_quote(token[i].content);
             if (contain_var(token[i].content))
             {
-                token[i].content = swap_var(token[i].content, list);
+                token[i].content = swap_var(token[i].content, data);
                 if (token[i].content)
                     token[i].malloc = TRUE;
                 else
@@ -51,7 +51,8 @@ int contain_var(char *s)
     {
         if (s[i] == '\'')
             detect = !detect;
-        if (detect && s[i] == '$' && is_identifier(&s[i + 1], &len))
+        if (detect && s[i] == '$' 
+            && (is_identifier(&s[i + 1], &len) || s[i + 1] == '?'))
             return (TRUE);
     }
     return (FALSE);

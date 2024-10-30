@@ -1,8 +1,11 @@
 #include "../../include/minishell.h"
 
 char *insert_var(char *s, int i, int *len, t_env *list);
+char *insert_exit_code(char *s, int i, int *len, int code);
+void convert_num(char *str, int code);
+void int_to_str(char *str, int code, int *i);
 
-/* Test
+/* Test */
 
 int main(int ac, char **av, char **env)
 {
@@ -13,7 +16,8 @@ int main(int ac, char **av, char **env)
     (void)ac;
     (void)av;
     setup_env(&data, env);
-    ptr = swap_var(s, data.env);
+    data.exit_code = 1;
+    ptr = swap_var(s, &data);
     
     if (ptr)
     {
@@ -21,10 +25,10 @@ int main(int ac, char **av, char **env)
         free(ptr);
     }
     else printf("Failed\n");
-    clear_env(&data);
+    destroy_env(&data);
     return 0;
 }
-*/
+
 
 /* swap_var
 Purpose: Insert variable ($----) value into the string. 
@@ -32,7 +36,7 @@ Result:
     string: Sucessfully swap
     NULL  : Failed malloc
 */
-char *swap_var(char *s, t_env *list)
+char *swap_var(char *s, t_shell *data)
 {
     int i;
     int detect;
@@ -45,9 +49,18 @@ char *swap_var(char *s, t_env *list)
     {
         if (s[i] == '\'')
             detect = !detect;
-        if (detect && s[i] == '$' && is_identifier(&s[i + 1], &len))
+        if (detect && s[i] == '$')
         {
-            temp = insert_var(s, i, &len, list);
+            if (is_identifier(&s[i + 1], &len))
+                temp = insert_var(s, i, &len, data->env);
+            
+            if (s[i + 1] == '?')
+            {
+                len = 1;
+                temp = insert_exit_code(s, i, &len, data->exit_code);
+            }
+                
+            
             if (malloc_status)
                 free(s);
             s = temp;
@@ -71,4 +84,40 @@ char *insert_var(char *s, int i, int *len, t_env *list)
     else
         *len = 0;
     return (result);
+}
+
+char *insert_exit_code(char *s, int i, int *len, int code)
+{
+    char str[4];
+    char *result;
+    
+    s[i] = '\0';
+    convert_num(str, code);
+    result = join3(s, str, &s[i + *len + 1]);
+    *len = strlen(str);
+    return (result);
+}
+
+void convert_num(char *str, int code)
+{
+    int i;
+
+    if (str == 0) 
+    {
+        str[0] = '0';
+        str[1] = '\0';
+        return;
+    }
+
+    i = 0;
+    int_to_str(char *str, &i);
+    num[i] = '\0'
+}
+
+void int_to_str(char *str, int code, int *i)
+{
+    if (code == 0)
+        return;
+    int_to_str(str, code / 10, i);
+    str[(*i)++] = (code % 10) + '0';
 }
