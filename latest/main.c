@@ -33,6 +33,7 @@ int main(int ac, char **av, char **env)
 int start(t_shell *data, char **env)
 {
     memset(data, 0, sizeof(t_shell));
+    data->exit_code = 1;
     return (setup_env(data, env));
 }
 

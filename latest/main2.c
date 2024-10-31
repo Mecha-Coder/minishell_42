@@ -50,6 +50,7 @@ int main(int ac, char **av, char **env)
     (void)ac;
     (void)av;
     if (!setup_env(&data, env)) exit(EXIT_FAILURE);
+    data.exit_code = 1;
 
     interective_mode(&data);
 

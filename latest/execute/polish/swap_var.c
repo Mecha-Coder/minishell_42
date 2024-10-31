@@ -5,20 +5,23 @@ char *insert_exit_code(char *s, int i, int *len, int code);
 void convert_num(char *str, int code);
 void int_to_str(char *str, int code, int *i);
 
-/* Test */
+
+/* Test
 
 int main(int ac, char **av, char **env)
 {
     t_shell data;
-    char s[] = "[Path $TEST  \" $SHELL \" && XX]";
+    char s[] = "[Path $TEST  \" $SHELL \" $?$$$USER]";
     char *ptr;
 
     (void)ac;
     (void)av;
     setup_env(&data, env);
-    data.exit_code = 1;
+    data.exit_code = 0;
+    printf("Enter1\n");
     ptr = swap_var(s, &data);
-    
+    printf("Enter2\n");
+
     if (ptr)
     {
         printf("%s\n", ptr);
@@ -28,7 +31,7 @@ int main(int ac, char **av, char **env)
     destroy_env(&data);
     return 0;
 }
-
+*/
 
 /* swap_var
 Purpose: Insert variable ($----) value into the string. 
@@ -49,7 +52,8 @@ char *swap_var(char *s, t_shell *data)
     {
         if (s[i] == '\'')
             detect = !detect;
-        if (detect && s[i] == '$')
+        if (detect && s[i] == '$'
+            && (is_identifier(&s[i + 1], &len) || s[i + 1] == '?'))
         {
             if (is_identifier(&s[i + 1], &len))
                 temp = insert_var(s, i, &len, data->env);
@@ -102,7 +106,7 @@ void convert_num(char *str, int code)
 {
     int i;
 
-    if (str == 0) 
+    if (code == 0) 
     {
         str[0] = '0';
         str[1] = '\0';
@@ -110,8 +114,8 @@ void convert_num(char *str, int code)
     }
 
     i = 0;
-    int_to_str(char *str, &i);
-    num[i] = '\0'
+    int_to_str(str, code, &i);
+    str[i] = '\0';
 }
 
 void int_to_str(char *str, int code, int *i)

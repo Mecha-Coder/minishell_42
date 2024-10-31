@@ -8,7 +8,7 @@ int run_cmd(t_tree *node, t_shell *data)
         if (!strcmp(node->cmd[0],"echo"))
             builtin_echo(node->cmd);
         else
-            return (none_builtin(node, list));
+            return (none_builtin(node, data->env));
     }
-    return (EXIT_SUCCESS);
+    return (0);
 }
