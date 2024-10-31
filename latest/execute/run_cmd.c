@@ -8,7 +8,6 @@ void prep_pipe(t_tree *node)
         dup2(node->pipe_in[0], STDIN_FILENO);
     }
     
-    
     if (node->pipe_out)
     {
         close(node->pipe_out[0]);

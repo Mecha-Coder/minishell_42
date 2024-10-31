@@ -34,7 +34,7 @@ Return
     OK : $PATH string value
     KO : NULL - $PATH not available/deleted
          NULL - blank
-*/
+*/               //PATH
 char *get_var(char *key, t_env *current)
 {
     while(current && strcmp(current->key, key))
