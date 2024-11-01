@@ -1,20 +1,6 @@
 #include "../include/minishell.h"
 
-void prep_pipe(t_tree *node)
-{
-    if (node->pipe_in)
-    {
-        close(node->pipe_in[1]);
-        dup2(node->pipe_in[0], STDIN_FILENO);
-    }
-    
-    if (node->pipe_out)
-    {
-        close(node->pipe_out[0]);
-        dup2(node->pipe_out[1], STDOUT_FILENO);
-    }
-    
-}
+
 
 int run_cmd(t_tree *node, t_shell *data)
 {

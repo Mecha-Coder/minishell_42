@@ -5,7 +5,7 @@ void	child(char **cmd, t_env *list);
 /* none_builtin
 Purpose: Execute command that is not part of the builtin
 */
-/*
+
 int none_builtin(t_tree *node, t_env *list)
 {
     pid_t id;
@@ -19,7 +19,6 @@ int none_builtin(t_tree *node, t_env *list)
         waitpid(id, &status, 0);
     return (WEXITSTATUS(status));
 }
-*/
 
 void	none_builtin(char **cmd, t_env *list)
 {
