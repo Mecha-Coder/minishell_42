@@ -24,6 +24,6 @@ void parse_path(char *s, char **path);
 
 //CMD
 void prep_cmd(t_tree *node);
-void none_builtin(char **cmd, t_env *list);
+//void none_builtin(char **cmd, t_env *list);
 char **env_list(t_env *current);
 #endif

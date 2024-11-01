@@ -44,7 +44,8 @@ typedef struct s_shell
     t_tree *tree;
     t_token token[CMD_SIZE];
     int token_len;
-    int exit_code;
+    int exit_cmd_no;
+    int exit_status;
 } t_shell;
 
 #endif
